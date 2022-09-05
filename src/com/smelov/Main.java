@@ -1,11 +1,12 @@
 package com.smelov;
 
-import com.smelov.service.Converter;
+import com.smelov.service.FileToList;
+import com.smelov.service.StrToSet;
+import com.smelov.service.Trim;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 
 public class Main {
 
@@ -13,24 +14,12 @@ public class Main {
 
         File inputFile = new File("input.txt");
         File outputFile = new File("output.txt");
-        List<Set> setList = new ArrayList<>();
-        char[] fromFile = new char[1000];
-        StringBuilder sb = new StringBuilder();
 
-        try (FileReader fileReader = new FileReader(inputFile)) {
-            int c;
-            while ((c = fileReader.read()) != -1) {
-                sb.append((char) c);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        List<String> stringList = FileToList.fileToList(inputFile);
 
-        System.out.println(sb);
-        System.out.println("---");
+        System.out.println(stringList);
 
-        Converter converter = new Converter();
-        converter.StrBldToSet(sb);
+        //---------------------------------
 
     }
 }
