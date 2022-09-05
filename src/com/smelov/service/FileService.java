@@ -2,11 +2,12 @@ package com.smelov.service;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileToList {
+public class FileService {
 
     //разбор файла по строкам; каждая строка - элемент коллекции
     public static List<String> fileToList(File input) {
@@ -34,5 +35,18 @@ public class FileToList {
             e.printStackTrace();
         }
         return stringList;
+    }
+
+    public static void listToFile(File output, List<String> stringList) {
+
+        try (FileWriter fileWriter = new FileWriter(output)) {
+            for (String str : stringList) {
+                    fileWriter.write(str);
+                    fileWriter.write("\n");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

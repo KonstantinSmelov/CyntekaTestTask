@@ -6,7 +6,7 @@ import java.util.Set;
 public class Trim {
 
     //TODO переделать
-    //робкая попытка выделения что-то типа корня слова :)
+    //робкая попытка выделения что-то типа корня слова
     public static Set<String> trimSet(Set<String> set) {
 
         Set<String> trimStringSet = new HashSet<>();
