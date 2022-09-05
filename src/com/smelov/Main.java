@@ -23,7 +23,7 @@ public class Main {
 
         Map<Integer, Integer> matchesMap = new HashMap<>();
 
-        //подбор похожих значений
+        //поиск максимально похожих значений
         for (int x = 0; x < firstPartSetsList.size(); x++) {
             int numberOfMatches = 0;
             for (int y = 0; y < secondPartSetsList.size(); y++) {
