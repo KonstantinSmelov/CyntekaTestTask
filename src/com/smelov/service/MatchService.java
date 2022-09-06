@@ -11,7 +11,7 @@ public class MatchService {
         Map<Integer, Integer> matchesMap = new HashMap<>();
         List<Set<String>> tmpSetsList = firstPartSetsList.stream().map(HashSet::new).collect(Collectors.toList());
 
-        if(firstPartSetsList.size() == secondPartSetsList.size()) {
+        if(firstPartSetsList.size() == secondPartSetsList.size() && secondPartSetsList.size() == 1) {
             matchesMap.put(0, 0);
             return matchesMap;
         }

@@ -6,7 +6,6 @@ import com.smelov.service.MatchService;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
 
