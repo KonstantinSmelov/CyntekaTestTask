@@ -5,8 +5,7 @@ import java.util.Set;
 
 public class TrimService {
 
-    //TODO переделать
-    //робкая попытка выделения что-то типа корня слова
+    //отбрасывание окончаний слов
     public static Set<String> trimSet(Set<String> set) {
 
         Set<String> trimStringSet = new HashSet<>();
@@ -23,13 +22,13 @@ public class TrimService {
         double trimLength = string.length();
 
         if (length >= 10) {
-            trimLength = length - (length * 41 / 100);
+            trimLength = 8;
         }
         if (length >= 8 && length < 10) {
-            trimLength = length - (length * 25 / 100);
+            trimLength = 7;
         }
         if (length >= 6 && length < 8) {
-            trimLength = length - (length * 15 / 100);
+            trimLength = 5;
         }
 
         return string.substring(0, (int) trimLength);
