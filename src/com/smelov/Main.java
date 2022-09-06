@@ -2,6 +2,7 @@ package com.smelov;
 
 import com.smelov.service.FileService;
 import com.smelov.service.ConversionService;
+import com.smelov.service.MatchService;
 
 import java.io.*;
 import java.util.*;
@@ -19,24 +20,8 @@ public class Main {
         List<Set<String>> secondPartSetsList = new ArrayList<>();
 
         ConversionService.listToListOfSet(stringFromFile, firstPartSetsList, secondPartSetsList);
-        List<Set<String>> tmpSetsList = firstPartSetsList.stream().map(HashSet::new).collect(Collectors.toList());
 
-        Map<Integer, Integer> matchesMap = new HashMap<>();
-
-        //поиск максимально похожих значений
-        for (int x = 0; x < firstPartSetsList.size(); x++) {
-            int numberOfMatches = 0;
-            for (int y = 0; y < secondPartSetsList.size(); y++) {
-                firstPartSetsList.get(x).retainAll(secondPartSetsList.get(y));
-                if (firstPartSetsList.get(x).isEmpty()) {
-                    firstPartSetsList.get(x).addAll(tmpSetsList.get(x));
-                } else if (numberOfMatches < firstPartSetsList.get(x).size()) {
-                    numberOfMatches = firstPartSetsList.get(x).size();
-                    matchesMap.put(x, y);
-                    firstPartSetsList.get(x).addAll(tmpSetsList.get(x));
-                }
-            }
-        }
+        Map<Integer, Integer> matchesMap = MatchService.matchesSearch(firstPartSetsList, secondPartSetsList);
 
         List<String> firstPartList = new ArrayList<>();
         List<String> secondPartList = new ArrayList<>();
